@@ -1,0 +1,69 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+  typeNamePlural: 'Flights',
+  title.value: 'Flightdate',
+  description.value: 'PlaneType'
+}
+@UI.presentationVariant: [{ sortOrder: [{ by: 'Flightdate', direction: #DESC }] }]
+annotate view ZC_05_Flight
+    with 
+{
+/*Facets*/
+@UI.facet:
+ [
+  {position: 10, label: 'flight details', type: #FIELDGROUP_REFERENCE, targetQualifier: 'details'},
+  {position: 20, label: 'seats', type: #FIELDGROUP_REFERENCE, targetQualifier: 'seats'},
+  {position: 30, label: 'Bookings', type: #LINEITEM_REFERENCE, targetElement: '_Bookings'}
+ ]
+
+
+
+/*Fields*/
+@UI.lineItem: [{position: 10}]
+@UI.selectionField: [{position: 10}]
+@UI.fieldGroup: [{qualifier: 'details', position: 10}]
+CarrierID;
+
+@UI.lineItem: [{position: 20, criticality:'FlightDateCriticality', criticalityRepresentation: #WITHOUT_ICON}]
+@UI.fieldGroup: [{qualifier: 'details', position: 20, criticality:'FlightDateCriticality', criticalityRepresentation: #WITHOUT_ICON}]
+ConnectionID;
+
+@UI.lineItem: [{position: 30}]
+@UI.selectionField: [{position: 20}]
+@UI.fieldGroup: [{qualifier: 'details', position: 30}]
+Flightdate;
+
+@UI.lineItem: [{position: 40}]
+@UI.selectionField: [{position: 30}]
+@UI.fieldGroup: [{qualifier: 'details', position: 40}]
+FlightPrice;
+
+//CurrencyCode;
+
+@UI.lineItem: [{position: 50}]
+@UI.selectionField: [{position: 40}]
+@UI.fieldGroup: [{qualifier: 'details', position: 50}]
+PlaneType;
+
+@UI.fieldGroup: [{qualifier: 'seats', position: 10}]
+MaximumSeatsEconomyClass;
+
+@UI.fieldGroup: [{qualifier: 'seats', position: 20}]
+OccupiedSeatsEconomyClass;
+
+@UI.fieldGroup: [{qualifier: 'details', position: 60}]
+PaymentSum;
+
+@UI.fieldGroup: [{qualifier: 'seats', position: 30}]
+MaximumSeatsBusinessClass;
+
+@UI.fieldGroup: [{qualifier: 'seats', position: 40}]
+OccupiedSeatsBusinessClass;
+
+@UI.fieldGroup: [{qualifier: 'seats', position: 50}]
+maximumseatsbfirstclass;
+
+@UI.fieldGroup: [{qualifier: 'seats', position: 60}]
+occupiedseatsbfirstclass;
+}
